@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const messageElem = document.createElement('span');
         messageElem.className = 'message';
-        messageElem.textContent = `${name} bought!`;
+        messageElem.textContent = `${name} purchased`;
         
         const imgElem = document.createElement('img');
         imgElem.src = imgSrc;
@@ -203,6 +203,14 @@ document.addEventListener('DOMContentLoaded', () => {
         notification.appendChild(messageElem);
         notificationContainer.appendChild(notification);
         
+        setTimeout(() => {
+            notification.className = 'notification-fadein notification';
+        }, 10);
+
+        setTimeout(() => {
+            notification.className = 'notification-fadeout notification';
+        }, duration-500);
+
         setTimeout(() => {
             notificationContainer.removeChild(notification);
         }, duration);

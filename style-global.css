@@ -369,12 +369,14 @@ nav {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: 300px;
     z-index: 1000;
+    pointer-events: none;
 }
 
 .notification {
-    background-color: #323232;
+    background-color: #ffffff11;
+    border: 1px solid #ffffff55;
+    backdrop-filter: blur(20px);
     color: #fff;
     padding: 15px;
     margin-top: 10px;
@@ -383,7 +385,32 @@ nav {
     justify-content: space-between;
     align-items: center;
     opacity: 0.9;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: bold;
+    gap: 10px;
+    filter: blur(20px);
+    pointer-events: none;
+    transform: translateX(400px);
+}
+
+.notification-fadein {
+    filter: blur(0px);
+    transition: 0.5s;
+    opacity: 1;
+    transform: translateX(0px);
+}
+
+.notification-fadeout {
+    filter: blur(20px);
+    transition: 0.5s cubic-bezier(.7,-0.63,.24,.99);
+    opacity: 0;
+    transform: translateX(400px);
+}
+
+.notification img {
+    width: 50px !important;
+    height: 50px !important;
+    padding: 0px;
 }
 
 .notification .message {
