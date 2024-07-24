@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
         itemWrapperBorder.className = 'item-wrapper-border';
 
         itemWrapperBorder.innerHTML = `
-            <div class="item-wrapper medkit-item" style="background-color: ${bgColor};">
+            <div class="item-wrapper" style="background-color: ${bgColor};">
                 <img src="${imgSrc}" alt="${name}" class="shop-item-img" draggable="false">
                 <div class="item-info">
                     <span class="item-name">${name}</span>
