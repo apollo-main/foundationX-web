@@ -2,7 +2,7 @@
 @import url('https://cdn-uicons.flaticon.com/2.4.2/uicons-regular-rounded/css/uicons-regular-rounded.css');
 @import url('https://cdn-uicons.flaticon.com/2.4.2/uicons-bold-rounded/css/uicons-bold-rounded.css');
 
-@media (max-width: 920px) {
+/* @media (max-width: 920px) {
     .burger-menu  {
         display: flex !important;
     }
@@ -18,7 +18,7 @@
         opacity: 0 !important;
         pointer-events: none !important;
     }
-}
+} */
 
 ::-webkit-scrollbar {
     width: 5px;
