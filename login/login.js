@@ -12,7 +12,7 @@ async function main() {
 
     const code = new URLSearchParams(window.location.search).get('code');
 
-    const response = await fetch(`https://api.foundationxservers.com/login`, {
+    const response = await fetch(`https://api.foundationxservers.com/login/`, {
         method: 'POST',
         body: JSON.stringify({
             code,
