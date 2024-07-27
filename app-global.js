@@ -5,6 +5,10 @@ var prevScrollpos = window.pageYOffset;
 window.LOGIN_LINK =
     'https://discord.com/oauth2/authorize?client_id=1156866965265203302&response_type=code&redirect_uri=https%3A%2F%2Fnew.foundationxservers.com%2Flogin%2F&scope=identify+connections';
 
+window.SITE_TOKEN = '';
+
+window.USER_BALANCE = 0;
+
 window.onscroll = function () {
     const burgerMenuButton = document.getElementById('burgerMenuButton');
     if (burgerMenuButton.getAttribute('burger-menu') === 'false') {
@@ -59,6 +63,14 @@ window.addEventListener('load', function () {
             preloader.style.display = 'none';
         }, 2500);
     }, 500);
+
+    const rawUser = this.localStorage.getItem('user');
+E
+    if (rawUser !== null) {
+        const { user, siteToken} = JSON.parse(rawUser);
+        window.SITE_TOKEN = siteToken;
+        window.USER_BALANCE = user.economy.balance;
+    }
 });
 
 function toggleBurgerMenu() {
