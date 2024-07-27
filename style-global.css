@@ -381,10 +381,9 @@ nav {
 
 .notification {
     background-color: #ffffff11;
-    border: 1px solid #ffffff55;
+    border: 0px solid #ffffff55;
     backdrop-filter: blur(20px);
     color: #fff;
-    padding: 15px;
     margin-top: 10px;
     border-radius: 15px;
     display: flex;
@@ -397,6 +396,8 @@ nav {
     filter: blur(20px);
     pointer-events: none;
     transform: translateX(400px);
+    height: 0px;
+    padding: 0px;
 }
 
 .notification-fadein {
@@ -404,6 +405,9 @@ nav {
     transition: 0.5s;
     opacity: 1;
     transform: translateX(0px);
+    border: 1px solid #ffffff55 !important;
+    height: 40px !important;
+    padding: 15px !important;
 }
 
 .notification-fadeout {
@@ -411,6 +415,7 @@ nav {
     transition: 0.5s cubic-bezier(.7,-0.63,.24,.99);
     opacity: 0;
     transform: translateX(400px);
+    height: 0px;
 }
 
 .notification img {
@@ -483,7 +488,7 @@ nav {
 
 section {
     margin-top: 5rem;
-    height: 150svh;
+    height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -566,22 +571,28 @@ canvas {
     transition: 0.2s;
     cursor: pointer;
     user-select: none;
+    background-color: #585858;
 }
 
+.shop-item-disabled {
+    opacity: 0.5;
+    background-color: #ff38387a !important;
+    cursor: not-allowed !important;
+}
 
-.item-wrapper-border:hover {
+.item-wrapper-border:not(.shop-item-wrapper-border-disabled):hover {
     scale: 1.05;
     rotate: 5deg;
     transition: 0.2s;
     border: #fff solid 2px;
 }
 
-.item-wrapper-border:hover .shop-item-img {
+.item-wrapper-border:not(.shop-item-wrapper-border-disabled):hover .shop-item-img {
     rotate: -5deg;
     transition: 0.2s;
 }
 
-.item-wrapper-border:active {
+.item-wrapper-border:not(.shop-item-wrapper-border-disabled):active {
     scale: 1;
     transition: 0s;
     background-color: #fff;

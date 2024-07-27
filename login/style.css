@@ -1,0 +1,51 @@
+body {
+    padding: 0px !important;
+    margin: 0px !important;
+    height: 100svh;
+    width: 100svw;
+}
+
+.login-page-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100svh;
+    width: 100svw;
+    gap: 10px;
+}
+
+.login-title {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.login-instructions {
+    opacity: 0.5;
+}
+
+.login-redirect-button {
+    padding: 5px 10px;
+    background-color: #fff;
+    color: #000;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.2s;
+    margin-top: 10px;
+}
+
+.login-redirect-button:hover {
+    scale: 1.1;
+    transition: 0.2s;
+}
+
+.login-redirect-button:active {
+    transition: 0s;
+    scale: 1;
+    opacity: 0.7;
+} 
+
+section {
+    top: 0;
+    margin: 0px;
+}

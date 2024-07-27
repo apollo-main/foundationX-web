@@ -128,7 +128,7 @@
 // });
 
 // populating the shop
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     function preloadImages(imageUrls) {
         imageUrls.forEach(url => {
             const img = new Image();
@@ -136,12 +136,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    const user = localStorage.getItem('user');
+
+    let siteToken;
+
+    if (user) {
+        siteToken = JSON.parse(user).siteToken;
+    } else {
+        siteToken = null;
+    }
+
     function createShopItem(name, usage, price, imgSrc, bgColor) {
         const itemWrapperBorder = document.createElement('div');
         itemWrapperBorder.className = 'item-wrapper-border';
 
+        if (siteToken === null) {
+            itemWrapperBorder.classList.add('shop-item-wrapper-border-disabled')
+            itemWrapperBorder.title = 'You must be logged in to purchase items';
+        }
+
+        imgSrc = `/shop/imgs/${imgSrc}.png`;
+
         itemWrapperBorder.innerHTML = `
-            <div class="item-wrapper" style="background-color: ${bgColor};">
+            <div class="item-wrapper ${siteToken ? '' : 'shop-item-disabled'}" style="background-color: ${bgColor};">
                 <img src="${imgSrc}" alt="${name}" class="shop-item-img" draggable="false">
                 <div class="item-info">
                     <span class="item-name">${name}</span>
@@ -154,9 +171,12 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
 
-        itemWrapperBorder.addEventListener('click', () => {
-            showBuyConfirmation(name, price, imgSrc);
-        });
+        if (siteToken) {
+            itemWrapperBorder.addEventListener('click', () => {
+                showBuyConfirmation(name, price, imgSrc);
+            });
+        }
+
 
         return itemWrapperBorder;
     }
@@ -175,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const imageUrls = [];
 
         items.forEach(item => {
-            const shopItem = createShopItem(item.name, item.usage, item.price, item.imgSrc, item.bgColor);
+            const shopItem = createShopItem(item.title, item.subtitle, item.cost, item.image, item.bgColor);
             mainShop.appendChild(shopItem);
             imageUrls.push(item.imgSrc);
         });
@@ -234,11 +254,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const shopItems = [
-        { name: 'Medkit', usage: 'One Time', price: 99, imgSrc: './imgs/200px-MedkitIcon.png', bgColor: '#ff3938' },
-        { name: 'Candy', usage: 'One Time', price: 79, imgSrc: './imgs/200px-CandyBagIcon.webp', bgColor: '#53208d' },
-        { name: 'Armour', usage: 'One Time', price: 49, imgSrc: './imgs/200px-HeavyArmorIcon.png', bgColor: '#4f473e' }
-    ];
+    const shopItemsRequest = await fetch('https://api.foundationxservers.com/economy/rewards');
+
+    if (!shopItemsRequest.ok) {
+        throw await shopItemsRequest.json();
+    }
+
+    const shopItems = await shopItemsRequest.json();
+
+    console.log(shopItems.map(e => e.image).join('\n'));
 
     populateShop(shopItems);
 });
