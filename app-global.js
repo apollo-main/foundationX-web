@@ -122,3 +122,7 @@ function closeMenuFunction() {
     crossIcon.style.scale = '0';
     crossIcon.style.opacity = '0';
 }
+
+// fetching balance
+var balanceAmountValue = document.getElementById('balanceAmount');
+balanceAmountValue.textContent = window.USER_BALANCE
