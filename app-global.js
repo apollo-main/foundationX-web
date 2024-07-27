@@ -116,39 +116,39 @@ function toggleBurgerMenu() {
     }
 }
 
-function openMenuFunction() {
-    console.log('Menu opened');
-    var burgerMenuScreen = document.getElementById('burgerMenu');
-    var burgerIcon = document.getElementById('burgerIcon');
-    var crossIcon = document.getElementById('crossIcon');
+// function openMenuFunction() {
+//     console.log('Menu opened');
+//     var burgerMenuScreen = document.getElementById('burgerMenu');
+//     var burgerIcon = document.getElementById('burgerIcon');
+//     var crossIcon = document.getElementById('crossIcon');
 
-    burgerMenuScreen.style.pointerEvents = 'all';
-    burgerMenuScreen.style.scale = '1';
-    burgerMenuScreen.style.opacity = '1';
+//     burgerMenuScreen.style.pointerEvents = 'all';
+//     burgerMenuScreen.style.scale = '1';
+//     burgerMenuScreen.style.opacity = '1';
 
-    burgerIcon.style.scale = '0';
-    burgerIcon.style.opacity = '0';
+//     burgerIcon.style.scale = '0';
+//     burgerIcon.style.opacity = '0';
 
-    crossIcon.style.scale = '1';
-    crossIcon.style.opacity = '1';
+//     crossIcon.style.scale = '1';
+//     crossIcon.style.opacity = '1';
 
-    document.getElementById('nav').style.top = '0';
-    document.getElementById('nav').style.opacity = '1';
-}
+//     document.getElementById('nav').style.top = '0';
+//     document.getElementById('nav').style.opacity = '1';
+// }
 
-function closeMenuFunction() {
-    console.log('Menu closed');
-    var burgerMenuScreen = document.getElementById('burgerMenu');
-    var burgerIcon = document.getElementById('burgerIcon');
-    var crossIcon = document.getElementById('crossIcon');
+// function closeMenuFunction() {
+//     console.log('Menu closed');
+//     var burgerMenuScreen = document.getElementById('burgerMenu');
+//     var burgerIcon = document.getElementById('burgerIcon');
+//     var crossIcon = document.getElementById('crossIcon');
 
-    burgerMenuScreen.style.pointerEvents = 'none';
-    burgerMenuScreen.style.scale = '1.2';
-    burgerMenuScreen.style.opacity = '0';
+//     burgerMenuScreen.style.pointerEvents = 'none';
+//     burgerMenuScreen.style.scale = '1.2';
+//     burgerMenuScreen.style.opacity = '0';
 
-    burgerIcon.style.scale = '1';
-    burgerIcon.style.opacity = '1';
+//     burgerIcon.style.scale = '1';
+//     burgerIcon.style.opacity = '1';
 
-    crossIcon.style.scale = '0';
-    crossIcon.style.opacity = '0';
-}
+//     crossIcon.style.scale = '0';
+//     crossIcon.style.opacity = '0';
+// }
