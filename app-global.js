@@ -82,8 +82,7 @@ window.addEventListener('load', function () {
         window.USER_BALANCE = user.economy.balance;
     }
 
-    // fetching balance
-    window.updateUserBalanceDisplay();
+    window.refetchUser();
 });
 
 window.updateUserBalanceDisplay = () => {
@@ -101,6 +100,38 @@ window.updateUserBalanceDisplay = () => {
                 this.localStorage.setItem('user', JSON.stringify(fullData));
             }
         }
+}
+
+window.refetchUser = async () => {
+    if (!window.SITE_TOKEN) {
+        throw new Error('Cannot fetch current user without a token');
+    }
+    
+    const response = await fetch('https://api.foundationxservers.com/users/@me', {
+        headers: {
+            Authorization: `Bearer ${window.SITE_TOKEN}`,
+            Accept: 'application/json',
+        }
+    });
+    
+    if (!response.ok) {
+        console.log(await response.json());
+        localStorage.removeItem('user');
+        window.alert('Session expired, logging out');
+        window.location.reload();
+        return;
+    }
+
+    const user = await response.json();
+
+    localStorage.setItem('user', JSON.stringify({
+        user,
+        siteToken: window.SITE_TOKEN,
+    }));
+
+    window.USER_BALANCE = user.economy.balance;
+
+    window.updateUserBalanceDisplay();
 }
 
 function toggleBurgerMenu() {
