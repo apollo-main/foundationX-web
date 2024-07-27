@@ -1,36 +1,3 @@
-// login/logout buttons
-var logoutButtonNav = document.getElementById('logoutButtonNav');
-var loginButtonNav = document.getElementById('loginButtonNav');
-var loginWarning = document.getElementById('loginWarning');
-var shopWrapper = document.getElementById('shopWrapper');
-var mainShop = document.getElementById('mainShop');
-
-let siteToken;
-const user = localStorage.getItem('user');
-
-if (user) {
-    siteToken = JSON.parse(user).siteToken;
-} else {
-    siteToken = null;
-}
-
-if (siteToken === null) {
-    logoutButtonNav.style.display = 'none';
-    loginWarning.style.display = 'flex';
-    shopWrapper.style.display = 'none';
-    mainShop.style.display = 'none';
-
-} else {
-    loginButtonNav.style.display = 'none';
-    loginWarning.style.display = 'none';
-    shopWrapper.style.display = 'flex';
-    mainShop.style.display = 'flex';
-}
-
-
-
-logoutButtonNav.style.display = 'none';
-
 // navbar hiding function
 var nav = document.getElementById('nav');
 var prevScrollpos = window.pageYOffset;
