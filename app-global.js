@@ -14,16 +14,16 @@ if (user) {
     siteToken = null;
 }
 
-loginButtonNav.style.display = 'none';
-loginWarning.style.display = 'none';
-shopWrapper.style.display = 'flex';
-
 if (siteToken === null) {
     logoutButtonNav.style.display = 'none';
     loginWarning.style.display = 'flex';
     shopWrapper.style.display = 'none';
     mainShop.style.display = 'none';
 
+} else {
+    loginButtonNav.style.display = 'none';
+    loginWarning.style.display = 'none';
+    shopWrapper.style.display = 'flex';
 }
 
 
