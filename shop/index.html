@@ -42,6 +42,14 @@
         </a>
     </div>
     
+    <div class="balance-wrapper" title="Medal Balance">
+        <!-- <span>Medal Balance</span> -->
+        <div class="balance-amount">
+            <i class="fi fi-br-badge item-currency"></i>
+            <span id="balanceAmountValue">loading</span>
+        </div>
+    </div>
+
     <div class="buy-conf" id="buyConf">
         <div class="buy-conf-dialogue">
             <div class="buy-conf-text">
@@ -86,7 +94,7 @@
                     <span>discord</span>
                 </a>
                 <a class="discord-login-button log-in-out-button" id="loginButtonNav">log in</a>
-                <a class="button discord-logout-button log-in-out-button" id="logoutButtonNav">log out</a>
+                <a class="button discord-logout-button log-in-out-button" id="logoutButtonNav" onclick="window.location.reload()">log out</a>
             </div>
             <div class="burger-menu" onclick="toggleBurgerMenu()" id="burgerMenuButton" burger-menu="false">
                 <i class="fi fi-rr-menu-burger burger-icon burger-menu-icons" id="burgerIcon"></i>

@@ -65,7 +65,7 @@ window.addEventListener('load', function () {
     }, 500);
 
     const rawUser = this.localStorage.getItem('user');
-E
+
     if (rawUser !== null) {
         const { user, siteToken} = JSON.parse(rawUser);
         window.SITE_TOKEN = siteToken;
