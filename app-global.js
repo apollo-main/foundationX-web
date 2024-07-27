@@ -36,7 +36,7 @@ var nav = document.getElementById('nav');
 var prevScrollpos = window.pageYOffset;
 
 window.LOGIN_LINK =
-    'https://discord.com/oauth2/authorize?client_id=1156866965265203302&response_type=code&redirect_uri=https%3A%2F%2Fnew.foundationxservers.com%2Flogin&scope=identify+connections';
+    'https://discord.com/oauth2/authorize?client_id=1156866965265203302&response_type=code&redirect_uri=https%3A%2F%2Fnew.foundationxservers.com%2Flogin%2F&scope=identify+connections';
 
 window.onscroll = function () {
     const burgerMenuButton = document.getElementById('burgerMenuButton');
