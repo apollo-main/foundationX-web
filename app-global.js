@@ -124,5 +124,5 @@ function closeMenuFunction() {
 }
 
 // fetching balance
-var balanceAmountValue = document.getElementById('balanceAmount');
+var balanceAmountValue = document.getElementById('balanceAmountValue');
 balanceAmountValue.textContent = window.USER_BALANCE
