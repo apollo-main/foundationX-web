@@ -1,6 +1,8 @@
 // login/logout buttons
 var logoutButtonNav = document.getElementById('logoutButtonNav');
 var loginButtonNav = document.getElementById('loginButtonNav');
+var loginWarning = document.getElementById('loginWarning');
+var shopWrapper = document.getElementById('shopWrapper');
 
 let siteToken;
 const user = localStorage.getItem('user');
@@ -13,8 +15,12 @@ if (user) {
 
 if (siteToken === null) {
     logoutButtonNav.style.display = 'none';
+    loginWarning.style.display = 'flex';
+    shopWrapper.style.display = 'none';
 } else {
     loginButtonNav.style.display = 'none';
+    loginWarning.style.display = 'none';
+    shopWrapper.style.display = 'flex';
 }
 
 
