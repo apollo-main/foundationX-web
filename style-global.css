@@ -746,6 +746,7 @@ canvas {
 }
 
 footer {
+    margin-top: 40px;
     width: 100%;
     height: 400px;
     background-color: #384CFF;
