@@ -71,6 +71,10 @@ window.addEventListener('load', function () {
         window.SITE_TOKEN = siteToken;
         window.USER_BALANCE = user.economy.balance;
     }
+
+    // fetching balance
+    var balanceAmountValue = document.getElementById('balanceAmountValue');
+    balanceAmountValue.textContent = window.USER_BALANCE
 });
 
 function toggleBurgerMenu() {
@@ -122,7 +126,3 @@ function closeMenuFunction() {
     crossIcon.style.scale = '0';
     crossIcon.style.opacity = '0';
 }
-
-// fetching balance
-var balanceAmountValue = document.getElementById('balanceAmountValue');
-balanceAmountValue.textContent = window.USER_BALANCE
