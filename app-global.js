@@ -2,8 +2,13 @@
 var nav = document.getElementById('nav');
 var prevScrollpos = window.pageYOffset;
 
-window.LOGIN_LINK =
-    'https://discord.com/oauth2/authorize?client_id=1156866965265203302&response_type=code&redirect_uri=https%3A%2F%2Fnew.foundationxservers.com%2Flogin%2F&scope=identify+connections';
+if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    window.LOGIN_LINK = 'https://discord.com/oauth2/authorize?client_id=1156866965265203302&response_type=code&redirect_uri=http%3A%2F%2F127.0.0.1%3A5500%2Flogin%2F&scope=identify+connections'
+} else {
+    window.LOGIN_LINK =
+        'https://discord.com/oauth2/authorize?client_id=1156866965265203302&response_type=code&redirect_uri=https%3A%2F%2Fnew.foundationxservers.com%2Flogin%2F&scope=identify+connections';
+}
+
 
 window.SITE_TOKEN = '';
 
@@ -32,24 +37,29 @@ window.addEventListener('load', function () {
 
     this.document.querySelectorAll('.discord-logout-button').forEach((e) => {
         e.addEventListener('click', async () => {
-            const rawUser = localStorage.getItem('user');
-            if (rawUser === null) return;
-
-            const user = JSON.parse(rawUser);
+            if (!window.SITE_TOKEN) {
+                window.alert('Already logged out.');
+                return;
+            }
 
             const response = await fetch('https://api.foundationxservers.com/logout', {
                 method: 'POST',
                 headers: {
-                    Authorization: `Bearer ${user.siteToken}`,
+                    Authorization: `Bearer ${window.SITE_TOKEN}`,
                 },
             });
 
-            if (response.status === 200) {
-                localStorage.removeItem('user');
-                console.log('Successfully logged out');
-            } else {
-                window.alert('logout failed uh oh');
+            localStorage.removeItem('user');
+
+            window.SITE_TOKEN = '';
+            window.USER_BALANCE = 0;
+
+            if (!response.ok) {
+                window.alert('Logout failed');
+                console.log(await response.json());
             }
+            
+            window.location.reload();
         });
     });
 
