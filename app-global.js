@@ -24,6 +24,7 @@ if (siteToken === null) {
     loginButtonNav.style.display = 'none';
     loginWarning.style.display = 'none';
     shopWrapper.style.display = 'flex';
+    mainShop.style.display = 'flex';
 }
 
 
