@@ -83,9 +83,25 @@ window.addEventListener('load', function () {
     }
 
     // fetching balance
-    var balanceAmountValue = document.getElementById('balanceAmountValue');
-    balanceAmountValue.textContent = window.USER_BALANCE
+    window.updateUserBalanceDisplay();
 });
+
+window.updateUserBalanceDisplay = () => {
+        var balanceAmountValue = document.getElementById('balanceAmountValue');
+        balanceAmountValue.textContent = window.USER_BALANCE;
+        
+        
+        const rawUser = this.localStorage.getItem('user');
+
+        if (rawUser !== null) {
+            const fullData = JSON.parse(rawUser);
+
+            if (fullData.user.economy.balance !== window.USER_BALANCE) {
+                fullData.user.economy.balance = window.USER_BALANCE;
+                this.localStorage.setItem('user', JSON.stringify(fullData));
+            }
+        }
+}
 
 function toggleBurgerMenu() {
     const burgerMenuButton = document.getElementById('burgerMenuButton');

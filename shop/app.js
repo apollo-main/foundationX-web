@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
-    function createShopItem(name, usage, price, imgSrc, bgColor) {
+    function createShopItem(id, name, usage, price, imgSrc, bgColor) {
         const itemWrapperBorder = document.createElement('div');
         itemWrapperBorder.className = 'item-wrapper-border';
 
@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         if (siteToken) {
             itemWrapperBorder.addEventListener('click', () => {
-                showBuyConfirmation(name, price, imgSrc);
+                showBuyConfirmation(id, name, price, imgSrc, price);
             });
         }
 
@@ -200,11 +200,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         return itemWrapperBorder;
     }
 
-    function showBuyConfirmation(name, price, imgSrc) {
+    function showBuyConfirmation(id, name, price, imgSrc, cost) {
         const buyConf = document.getElementById('buyConf');
         document.getElementById('confItemName').textContent = name;
         document.getElementById('confItemPrice').textContent = price;
         document.getElementById('confItemImage').src = imgSrc;
+
+        document.getElementById('confItemName').setAttribute('x-item-id', id);
+        document.getElementById('confItemName').setAttribute('x-item-cost', cost);
 
         buyConf.classList.add('active');
     }
@@ -214,7 +217,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const imageUrls = [];
 
         items.forEach(item => {
-            const shopItem = createShopItem(item.title, item.subtitle, item.cost, item.image, item.bgColor);
+            const shopItem = createShopItem(item.id, item.title, item.subtitle, item.cost, item.image, item.bgColor);
             mainShop.appendChild(shopItem);
             imageUrls.push(item.imgSrc);
         });
@@ -265,6 +268,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     const confirmButton = document.getElementById('confirmPurchaseButton');
     if (confirmButton) {
         confirmButton.addEventListener('click', async () => {
+            const id = document.getElementById('confItemName').getAttribute('x-item-id');
+            const cost = document.getElementById('confItemName').getAttribute('x-item-cost');
+
+            await buyItem(id, cost);
+
+            window.USER_BALANCE -= cost;
+            window.updateUserBalanceDisplay();
+
             const confItemName = document.getElementById('confItemName').textContent;
             const confItemImage = document.getElementById('confItemImage').src;
             document.getElementById('buyConf').classList.remove('active');
@@ -307,5 +318,5 @@ async function buyItem(id, cost) {
         throw await req.json();
     }
 
-    console.log(`Purchase successful`, data);
+    console.log(`Purchase successful`, await req.json());
 }
