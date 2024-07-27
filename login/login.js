@@ -5,7 +5,7 @@ let redirectUri;
 if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
     redirectUri = `http://localhost:${window.location.port}/login/`;
 } else {
-    redirectUri = 'https://new.foundationxservers.com/login';
+    redirectUri = 'https://new.foundationxservers.com/login/';
 }
 
 async function main() {
