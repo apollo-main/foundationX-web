@@ -165,16 +165,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
-    const user = localStorage.getItem('user');
-
-    let siteToken;
-
-    if (user) {
-        siteToken = JSON.parse(user).siteToken;
-    } else {
-        siteToken = null;
-    }
-
     function createShopItem(name, usage, price, imgSrc, bgColor) {
         const itemWrapperBorder = document.createElement('div');
         itemWrapperBorder.className = 'item-wrapper-border';
@@ -274,7 +264,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const confirmButton = document.getElementById('confirmPurchaseButton');
     if (confirmButton) {
-        confirmButton.addEventListener('click', () => {
+        confirmButton.addEventListener('click', async () => {
             const confItemName = document.getElementById('confItemName').textContent;
             const confItemImage = document.getElementById('confItemImage').src;
             document.getElementById('buyConf').classList.remove('active');
@@ -293,3 +283,29 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     populateShop(shopItems);
 });
+
+async function buyItem(id, cost) {
+    if (!window.SITE_TOKEN) {
+        throw new Error('Not logged in (no site token found)');
+    }
+
+    if (window.USER_BALANCE < cost) {
+        throw new Error(`Insufficient balance (need ${cost}, have ${window.USER_BALANCE})`);
+    }
+
+    const req = await fetch('https://api.foundationxservers.com/economy/payouts', {
+        method: 'POST',
+        headers: {
+            Authorization: `Bearer ${window.SITE_TOKEN}`,
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+        },
+        body: JSON.stringify([id]),
+    });
+
+    if (!req.ok) {
+        throw await req.json();
+    }
+
+    console.log(`Purchase successful`, data);
+}
