@@ -16,7 +16,7 @@ async function main() {
         method: 'POST',
         body: JSON.stringify({
             code,
-            redirectUri: 'http://127.0.0.1:5500/login/',
+            redirectUri: 'http://new.foundationxservers.com/login/',
         }),
         headers: {
             'Content-Type': 'application/json',
