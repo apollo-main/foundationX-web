@@ -291,7 +291,5 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const shopItems = await shopItemsRequest.json();
 
-    console.log(shopItems.map(e => e.image).join('\n'));
-
     populateShop(shopItems);
 });
