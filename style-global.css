@@ -608,7 +608,7 @@ canvas {
 
 .item-wrapper-border:not(.shop-item-wrapper-border-disabled):hover {
     scale: 1.05;
-    rotate: 5deg;
+    rotate: 2deg;
     transition: 0.2s;
     border: #fff solid 2px;
 }
