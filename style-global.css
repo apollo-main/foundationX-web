@@ -571,7 +571,7 @@ canvas {
     transition: 0.2s;
     cursor: pointer;
     user-select: none;
-    background-color: #585858;
+    background-color: #1f1f1f;
 }
 
 .shop-item-disabled {
@@ -611,6 +611,7 @@ canvas {
     height: 80px;
     width: 80px;
     transition: 0.2s;
+    object-fit: contain;
 }
 
 .item-price-wrapper {
@@ -701,4 +702,40 @@ canvas {
 
 .jailbird-item {
     background-color: #1f3980;
+}
+
+.log-in-out-button {
+    text-decoration: none;
+    font-weight: bold;
+    color: #fff !important;
+}
+
+.log-in-out-button:hover {
+    opacity: 0.5;
+    text-decoration: underline;
+}
+
+.log-in-out-button:active {
+    opacity: 0.25;
+}
+
+footer {
+    margin-top: 40px;
+    width: 100%;
+    height: 400px;
+    background-color: #384CFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.site-by {
+    position: absolute;
+    bottom: 10px;
+    opacity: 0.5;
+    font-size: 10px;
+    font-weight: bold;
+    color: #fff;
+    font-family: "Inter", sans-serif;
 }
