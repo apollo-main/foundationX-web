@@ -310,10 +310,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 function buttonTimeout() {
-    confirmButton.classList.add('buy-conf-button-disabled')
+    document.getElementById('confirmPurchaseButton').classList.add('buy-conf-button-disabled')
 
     setTimeout(() => {
-        onfirmButton.classList.remove('buy-conf-button-disabled')
+        document.getElementById('confirmPurchaseButton').classList.remove('buy-conf-button-disabled')
     }, duration);
 }
 
