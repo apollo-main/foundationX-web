@@ -271,6 +271,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             const id = document.getElementById('confItemName').getAttribute('x-item-id');
             const cost = document.getElementById('confItemName').getAttribute('x-item-cost');
 
+            confirmButton.classList.add('buy-conf-button-disabled')
+
             await buyItem(id, cost);
 
             window.USER_BALANCE -= cost;
@@ -318,5 +320,6 @@ async function buyItem(id, cost) {
         throw await req.json();
     }
 
+    document.getElementById('confirmPurchaseButton').classList.remove('buy-conf-button-disabled')
     console.log(`Purchase successful`, await req.json());
 }
