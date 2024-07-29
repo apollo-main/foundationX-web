@@ -271,7 +271,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const id = document.getElementById('confItemName').getAttribute('x-item-id');
             const cost = document.getElementById('confItemName').getAttribute('x-item-cost');
 
-            confirmButton.classList.add('buy-conf-button-disabled')
+            buttonTimeout();
 
             await buyItem(id, cost);
 
@@ -296,6 +296,14 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     populateShop(shopItems);
 });
+
+function buttonTimeout() {
+    confirmButton.classList.add('buy-conf-button-disabled')
+
+    setTimeout(() => {
+        onfirmButton.classList.remove('buy-conf-button-disabled')
+    }, duration);
+}
 
 async function buyItem(id, cost) {
     if (!window.SITE_TOKEN) {
