@@ -283,18 +283,22 @@ document.addEventListener('DOMContentLoaded', async () => {
             const id = document.getElementById('confItemName').getAttribute('x-item-id');
             const cost = document.getElementById('confItemName').getAttribute('x-item-cost');
 
-            buttonTimeout();
+            document.getElementById('confirmPurchaseButton').classList.add('buy-conf-button-disabled')
 
-            await buyItem(id, cost);
+            if (USER_BALANCE <= 0) {
+                document.getElementById('confirmPurchaseButton').classList.remove('buy-conf-button-disabled')
+            } else {
+                await buyItem(id, cost);
 
-            window.USER_BALANCE -= cost;
-            window.updateUserBalanceDisplay();
-
-            const confItemName = document.getElementById('confItemName').textContent;
-            const confItemImage = document.getElementById('confItemImage').src;
-            document.getElementById('buyConf').classList.remove('active');
-            showNotification(confItemName, confItemImage);
-            console.log(`Purchase made for item: ${confItemName}`);
+                window.USER_BALANCE -= cost;
+                window.updateUserBalanceDisplay();
+    
+                const confItemName = document.getElementById('confItemName').textContent;
+                const confItemImage = document.getElementById('confItemImage').src;
+                document.getElementById('buyConf').classList.remove('active');
+                showNotification(confItemName, confItemImage);
+                console.log(`Purchase made for item: ${confItemName}`);
+            }
         });
     }
 
@@ -308,14 +312,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     populateShop(shopItems);
 });
-
-function buttonTimeout() {
-    document.getElementById('confirmPurchaseButton').classList.add('buy-conf-button-disabled')
-
-    setTimeout(() => {
-        document.getElementById('confirmPurchaseButton').classList.remove('buy-conf-button-disabled')
-    }, duration);
-}
 
 async function buyItem(id, cost) {
     if (!window.SITE_TOKEN) {
