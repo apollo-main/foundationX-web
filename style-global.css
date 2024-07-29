@@ -58,7 +58,7 @@
     flex-direction: column;
     background-color: #384cff62;
     backdrop-filter: blur(30px);
-    z-index: 99999999;
+    z-index: 99999998;
     transition: 0.5s;
     opacity: 0;
     pointer-events: none;
@@ -297,6 +297,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .nav-buttons {
@@ -806,13 +807,13 @@ footer {
 }
 
 .balance-wrapper {
-    position: fixed;
     bottom: 0;
     left: 0;
     margin: 15px;
     padding: 10px;
     border-radius: 15px;
-    background-color: #ffffff11;
+    position: fixed;
+    background-color: #00000011;
     border: 1px solid #ffffff55;
     display: flex;
     justify-content: flex-end;
@@ -822,7 +823,7 @@ footer {
     font-family: "Inter", sans-serif;
     font-weight: bold;
     gap: 5px;
-    z-index: 999999;
+    z-index: 99999999;
     backdrop-filter: blur(20px);
     box-shadow: 0px 0px 10px 1px #00000055;
 }
@@ -833,4 +834,18 @@ footer {
     align-items: center;
     flex-direction: row;
     gap: 5px;
+}
+
+.logout-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+#logoutProfilePicture {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid #fff;
 }
