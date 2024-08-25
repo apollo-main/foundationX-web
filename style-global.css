@@ -116,7 +116,7 @@
     align-items: center;
     flex-direction: column;
     background-color: #000000a6;
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(25px);
     z-index: 9999999;
     transition: 0.3s;
     opacity: 0;
