@@ -196,7 +196,17 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <span class="item-usage">${usage}</span>
                 </div>
                 <span class="item-price-wrapper">
-                    <i class="fi fi-br-badge item-currency"></i>
+                    <svg width="13" height="13" viewBox="0 0 309 270" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_0_3)">
+                        <path d="M0 22.05L122.73 120.92L79.55 209.55L150 143.64L301.14 269.78H37.5L0 22.05Z" fill="black"/>
+                        <path d="M186.14 140.91L255.46 71.59L214.55 161.36L308.87 237.5L294.09 29.55L17.96 0L186.14 140.91Z" fill="black"/>
+                        </g>
+                        <defs>
+                        <clipPath id="clip0_0_3">
+                        <rect width="308.87" height="269.78" fill="black"/>
+                        </clipPath>
+                        </defs>
+                    </svg>         
                     <span class="item-price">${price}</span>
                 </span>
             </div>
