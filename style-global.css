@@ -272,6 +272,7 @@
 body {
     background-color: #111111;
     margin: 0px;
+    overflow-x: hidden; /* This hides any horizontal overflow */
 }
 
 nav {
@@ -781,9 +782,9 @@ canvas {
 }
 
 footer {
-    margin-top: 40px;
+    margin-top: 45px;
     width: 100%;
-    height: 400px;
+    height: 35px;
     background-color: #384CFF;
     display: flex;
     justify-content: center;
@@ -848,4 +849,175 @@ footer {
     height: 30px;
     border-radius: 50%;
     border: 2px solid #fff;
+}
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #121212; /* Dark background */
+    margin: 0;
+    padding: 0;
+    color: #e0e0e0; /* Light gray text */
+    overflow-x: hidden; /* This hides any horizontal overflow */
+}
+
+header {
+    background-color: #1a1a1a; /* Slightly lighter dark background */
+    color: #fff;
+    margin-top: auto;
+    padding: 100px;
+    padding-bottom: 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Add shadow for depth */
+}
+
+footer {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+/* Welcome Section */
+.welcome-section {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #1f1f1f; /* Dark but distinguishable section background */
+    border-radius: 10px;
+    margin-bottom: 40px;
+    color: #e0e0e0;
+}
+
+.welcome-section h2 {
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.welcome-section p {
+    font-size: 18px;
+    color: #cccccc; /* Slightly lighter gray for text */
+}
+
+/* Server Stats Grid */
+#server-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6); /* Darker shadow for grid */
+}
+
+.stat-item {
+    background-color: #242424; /* Lighter than the background to distinguish cards */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); /* Slightly darker shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+
+.stat-item:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+    transform: translateY(-5px);
+}
+
+.stat-item strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.stat-item p {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #cccccc;
+}
+
+/* Status Indicators */
+.status-indicator {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+}
+
+.status-online {
+    background-color: #28a745; /* Green for online */
+}
+
+.status-offline {
+    background-color: #dc3545; /* Red for offline */
+}
+
+.status-full {
+    background-color: #ffcc00; /* Yellow for full */
+}
+
+.status-near-full {
+    background-color: #ff6600; /* Orange for near full */
+}
+
+.status-low {
+    background-color: #007bff; /* Blue for low players */
+}
+
+/* Info Section */
+.info-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.info-section div {
+    flex: 1;
+    background-color: #1f1f1f;
+    padding: 20px;
+    border-radius: 10px;
+    margin-right: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Add shadow to info blocks */
+    text-align: center;
+}
+
+.info-section div:last-child {
+    margin-right: 0;
+}
+
+.info-section h3 {
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.info-section p {
+    color: #cccccc;
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+    #server-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .info-section {
+        flex-direction: column;
+    }
+
+    .info-section div {
+        margin-bottom: 20px;
+    }
+
+    .info-section div:last-child {
+        margin-right: 0;
+    }
 }
