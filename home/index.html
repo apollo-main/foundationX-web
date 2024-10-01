@@ -12,6 +12,8 @@
         document.addEventListener('DOMContentLoaded', function () {
             async function fetchServerStats() {
                 const statsDiv = document.getElementById('server-stats');
+                const serverstatinfo = document.getElementById('pageinfo')
+                serverstatinfo.innerHTML = '<p>Get real-time updates on player counts and server capacity. Stay connected to the FoundationX SCP:SL community!</p>'
                 statsDiv.innerHTML = '<p>Loading...</p>';  // Show loading message
     
                 try {
@@ -21,7 +23,9 @@
                     console.log(data);  // Log the fetched data to inspect it
                     
                     statsDiv.innerHTML = '';  // Clear previous content or loading message
-    
+                    
+
+                    let playersOnline = false; // Flag to check if any players are online
                     if (data.items && data.items.length > 0) {
                         console.log(data.items); // Log the items array
                         data.items.forEach(item => {
@@ -38,23 +42,31 @@
                                 statElement.innerHTML = `
                                     <strong>Server Name:</strong> ${serverName}<br>
                                 <strong>Players:</strong> ${item.playerCount}/${item.playerCap}<br>
-                            `;
-                            statsDiv.appendChild(statElement);
+                                `;
+                                statsDiv.appendChild(statElement);
+                                // Check if there are any players online
+                                if (item.playerCount > 0) {
+                                    playersOnline = true;
+                                }
                             }
                         });
                     } else {
                         statsDiv.innerHTML = '<p>No server stats available.</p>';
                     }
+                  
                 } catch (error) {
                     console.error('Error fetching server stats:', error);
-                    statsDiv.innerHTML = '<p>Error fetching server stats. Please try again later.</p>';
+                    serverstatinfo.innerHTML = '<p id="servers-offline" >SERVERS OFFLINE</p>'
+                    document.querySelector('.welcome-section').style.backgroundColor = '#ff0033'; // Change the background color to red
+                    //server offline message / error fetching status
+                    //TODO add colour changeing functionality
+                    statsDiv.innerHTML = '<p>Error fetching server status. Please try again later.</p>';
                 }
             }
     
             fetchServerStats();  // Fetch data when the page loads
         });
     </script>
-    
     <body>
         <div id="preloader">
             <svg width="100" height="100" viewBox="0 0 536 434" fill="none" xmlns="http://www.w3.org/2000/svg" class="preloader-icon">
@@ -139,22 +151,22 @@
 
     <!-- Header -->
     <header>
-        <h1 id="header-text">Welcome to the FoundationX Website</h1>
+        <h1 id="header-text">Welcome to FoundationX</h1>
     </header>
 
     <!-- Main Content -->
     <div class="container">
         <!-- Welcome Section -->
-        <div class="welcome-section">
-            <h2>FoundationX Server Page</h2>
-            <p>Get real-time updates on player counts and server capacity. Stay connected to FoundationX!</p>
+        <div class="welcome-section" id="pageinfo">
+            
+            <p id="serverstatus-serverinfo"></p>
         </div>
 
         <!-- Additional Information Section -->
         <div class="info-section">
             <div>
                 <h3>Join the Discord Server!</h3>
-                <p>Join our Discord server to stay connected with the community!</p>
+                <p>Join our Discord server to stay connected with the community! <br><br> Plus join find our community events like our gamenights and movie nights!</p>
                 <a class="button-secondary" href="https://discord.com/invite/FoundationX">
                     <i class="fi fi-brands-discord discord-logo"></i>
                     <span>FoundationX Discord</span>
@@ -168,7 +180,7 @@
             <div>
                 <h3>Donate</h3>
                 <p>If you enjoy playing on our servers, consider donating to support our continued operation and improvements! <br><br>
-                    Patreons gain access to exclusive commands!
+                    Patreons gain access to exclusive commands, find out more below!
                 </p>
             <a class="button-secondary patreon-button" href="https://www.patreon.com/FoundationX">
                 <i class="fi fi-brands-patreon patreon-logo"></i>
@@ -184,7 +196,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Foundation X Servers | All Rights Reserved</p>
+        <p>&copy; 2024 Foundation X | All Rights Reserved</p>
     </footer>
     
     
