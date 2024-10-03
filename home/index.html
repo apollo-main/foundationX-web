@@ -45,12 +45,8 @@
                                 // cant eb fucked to fix this formatting its late
                                 statElement.innerHTML = `    
                                 <span class="server-number">${serverID}</span>
-                                    <div>
-                                        <div style="
-    display: flex;
-    flex-wrap: nowrap;
-    white-space: nowrap;
-"><strong>Server Name: </strong> ${serverName}<br></div>
+                                    <div class="server-stats-text">
+                                        <div style="white-space: nowrap;"><strong>Server Name: </strong> ${serverName}<br></div>
                                         <div style="display: flex; flex-direction: row; gap: 5px;"><strong>Players:</strong> ${item.playerCount}/${item.playerCap}<br></div>    
                                     </div>
                                 `;
@@ -136,16 +132,21 @@
                         <a class="nav-title-text-main nav-title-text" href="../home/">FoundationX</a>
                     </div>
                 </div>
+         
+    
                 <div class="nav-buttons">
-                    <a class="button" href="../home/">home</a>
+                    <a class="button" href="https://foundationxservers.com/">home</a>
                     <a class="button" href="../shop/">shop</a>
-                    <a class="button" href="../staff/">staff</a>
+                    <!-- <a class="button" href="../staff/">staff</a> -->
                     <a class="button-secondary" href="https://discord.com/invite/FoundationX">
                         <i class="fi fi-brands-discord discord-logo"></i>
                         <span>discord</span>
                     </a>
-                    <a class="button discord-login-button">log in</a>
-                    <a class="button discord-logout-button">log out</a>
+                    <a class="discord-login-button log-in-out-button" id="loginButtonNav">log in</a>
+                    <div class="logout-wrapper discord-logout-button log-in-out-button" id="logoutButtonNav">
+                        <span class="button">log out</span>
+                        <img src="#" alt="pfp" id="logoutProfilePicture">
+                    </div>
                 </div>
                 <div class="burger-menu" onclick="toggleBurgerMenu()" id="burgerMenuButton" burger-menu="false">
                     <i class="fi fi-rr-menu-burger burger-icon burger-menu-icons" id="burgerIcon"></i>
@@ -165,29 +166,18 @@
                 </div>
     
                 <div class="info-section">
-                    <div>
-                        <h3>Join the Discord Server!</h3>
-                        <p>Join our Discord server to stay connected with the community! <br><br> Plus join find our community events like our gamenights and movie nights!</p>
-                        <a class="button-secondary" href="https://discord.com/invite/FoundationX">
-                            <i class="fi fi-brands-discord discord-logo"></i>
-                            <span>FoundationX Discord</span>
-                        </a>
-                    </div>
-                    <div>
-                        <h3>Server Slots</h3>
-                        <p>We have a limited amount of server slots available for players to join our servers. You can check the player count for each server down below!
-                        </p>
-                    </div>
-                    <div>
-                        <h3>Donate</h3>
-                        <p>If you enjoy playing on our servers, consider donating to support our continued operation and improvements! <br><br>
-                            Patreons gain access to exclusive commands, find out more below!
-                        </p>
-                    <a class="button-secondary patreon-button" href="https://www.patreon.com/FoundationX">
-                        <i class="fi fi-brands-patreon patreon-logo"></i>
-                        <span>Support on Patreon</span>
+                    <a href="https://discord.com/invite/FoundationX" class="homepage-big-button">
+                        <i class="fi fi-brands-discord big-button-icon"></i>
+                        <p>Join our Discord server to stay connected with the community! Plus join find our community events like our gamenights and movie nights!</p>
+                        <i class="fi fi-rr-interactive ineractive-indicator"></i>
                     </a>
-                    </div>
+                    <a href="https://www.patreon.com/FoundationX" class="homepage-big-button">
+                        <i class="fi fi-brands-patreon big-button-icon"></i>
+                        <p>If you enjoy playing on our servers, consider donating!<br>
+                            Patreons gain access to exclusive commands
+                        </p>
+                        <i class="fi fi-rr-interactive ineractive-indicator"></i>
+                    </a>
                 </div>
     
                 <div id="server-stats"></div>
@@ -216,6 +206,7 @@
         <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
         <!-- <script src="https://threejs.org/examples/js/libs/stats.min.js"></script> -->
         <script defer src="../app-global.js"></script>
+        <script defer src="./app.js"></script>
         <!-- <script defer src="./app.js"></script> -->
     </body>
 

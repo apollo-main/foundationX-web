@@ -1,6 +1,7 @@
 @import url('https://cdn-uicons.flaticon.com/2.4.2/uicons-brands/css/uicons-brands.css');
 @import url('https://cdn-uicons.flaticon.com/2.4.2/uicons-regular-rounded/css/uicons-regular-rounded.css');
 @import url('https://cdn-uicons.flaticon.com/2.4.2/uicons-bold-rounded/css/uicons-bold-rounded.css');
+@import url('https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css');
 
 /* @media (max-width: 920px) {
     .burger-menu  {
@@ -920,7 +921,7 @@ footer {
     background-color: #242424; /* Lighter than the background to distinguish cards */
     border-radius: 12px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* border: 1px solid rgba(255, 255, 255, 0.1); */
     position: relative;
     display: flex;
     flex-direction: row;
@@ -987,14 +988,35 @@ footer {
     justify-content: space-between;
     display: flex;
     gap: 20px;
+    width: 100%;
 }
 
-.info-section div {
+.homepage-big-button {
     flex: 1;
     background-color: #1f1f1f;
     padding: 20px;
     border-radius: 10px;
     text-align: center;
+    text-decoration: none;
+    transition: 0.2s;
+    box-shadow: 0px 0px 10px 1px #00000000;
+    border: 1px solid #ffffff22;
+    position: relative;
+    overflow: hidden;
+}
+
+.homepage-big-button:hover {
+    transform: translateY(-5px);
+    scale: 1.01;
+    box-shadow: 0px 0px 30px 1px #00000055;
+    transition: 0.2s;
+    z-index: 10;
+    background-color: #292929;
+}
+
+.homepage-big-button:active {
+    scale: 1;
+    transition: 0s;
 }
 
 .info-section div:last-child {
@@ -1030,6 +1052,35 @@ footer {
     }
 }
 
+.server-stats-text {
+    width: 100%;
+}
+
+@media (max-width: 1100px) {
+    #server-stats {
+        flex-wrap: wrap;
+    }
+
+    .server-stats-text {
+        align-items: flex-end;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .info-section {
+        flex-direction: column;
+    }
+
+    .section-homepage {
+        width: 80%;
+    }
+
+    .section-desc {
+        padding: 0px;
+        text-align: center;
+    }
+}
+
 .section-homepage {
     display: flex;
     flex-direction: column;
@@ -1053,5 +1104,24 @@ footer {
     color: #151515;
     background-color: #fff;
     height: 80px;
-    width: 100%;
+    width: 80px;
+}
+
+.big-button-icon {
+    color: #fff;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ineractive-indicator {
+    position: absolute;
+    color: #fff;
+    bottom: 10px;
+    right: 10px;
+    opacity: 0.1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

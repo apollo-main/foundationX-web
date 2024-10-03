@@ -16,7 +16,7 @@ window.USER_BALANCE = 0;
 
 window.onscroll = function () {
     const burgerMenuButton = document.getElementById('burgerMenuButton');
-    if (burgerMenuButton.getAttribute('burger-menu') === 'false') {
+    if (burgerMenuButton.getAttribute('burger-menu') === 'false' && window.pageYOffset > 60) {
         var currentScrollPos = window.pageYOffset;
         if (prevScrollpos > currentScrollPos) {
             document.getElementById('nav').style.top = '0';
