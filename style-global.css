@@ -746,7 +746,7 @@ canvas {
 
 .item-usage {
     opacity: 0.5;
-    font-size: 12px;
+    font-size: 15px;
 }
 
 .item-currency {
@@ -910,7 +910,7 @@ footer {
     gap: 20px;
     padding: 20px;
     background-color: #1a1a1a;
-    border-radius: 12px;
+    border-radius: 15px;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -919,7 +919,7 @@ footer {
 
 .stat-item {
     background-color: #242424; /* Lighter than the background to distinguish cards */
-    border-radius: 12px;
+    border-radius: 15px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     /* border: 1px solid rgba(255, 255, 255, 0.1); */
     position: relative;

@@ -1,8 +1,6 @@
 // login/logout buttons
 var logoutButtonNav = document.getElementById('logoutButtonNav');
 var loginButtonNav = document.getElementById('loginButtonNav');
-var shopWrapper = document.getElementById('shopWrapper');
-var mainShop = document.getElementById('mainShop');
 
 let siteToken;
 const user = localStorage.getItem('user');
@@ -16,9 +14,6 @@ if (user) {
 if (siteToken === null) {
     //logged out
     logoutButtonNav.style.display = 'none';
-    loginWarning.style.display = 'flex';
-    shopWrapper.style.display = 'none';
-    mainShop.style.display = 'none';
 
 } else {
     //logged in
@@ -33,6 +28,4 @@ if (siteToken === null) {
     }
 
     loginButtonNav.style.display = 'none';
-    shopWrapper.style.display = 'flex';
-    mainShop.style.display = 'flex';
 }
