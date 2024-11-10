@@ -1107,6 +1107,32 @@ footer {
     width: 80px;
 }
 
+.server-number-players-online {
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: #151515;
+    background-color: #43B581;
+    height: 80px;
+    width: 80px;
+}
+
+.server-number-full {
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: #151515;
+    background-color: #F04747;
+    height: 80px;
+    width: 80px;
+}
+
 .big-button-icon {
     color: #fff;
     font-size: 20px;
