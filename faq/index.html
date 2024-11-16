@@ -10,90 +10,6 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet"> 
         <link rel="icon" type="image/x-icon" href="../favicon.ico">
     </head>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            async function fetchServerStats() {
-                const statsDiv = document.getElementById('server-stats');
-                const serverstatinfo = document.getElementById('pageinfo');
-                statsDiv.innerHTML = '<p>Loading...</p>';  // Show loading message
-
-                try {
-                    const response = await fetch('https://api.foundationxservers.com/server-stats?page=0&perPage=20');
-                    const data = await response.json();
-                    
-                    console.log(data);  
-                    
-                    statsDiv.innerHTML = '';  
-                    
-                    let playersOnline = false; 
-                    if (data.items && data.items.length > 0) {
-                        console.log(data.items); 
-                        
-                        
-                        const serverStats = data.items.map(item => {
-                            let serverName = `ID: ${item._id}`;
-                            let serverID = `${item._id}`;
-
-                            
-                            if (item._id === "70248") serverName = 'Foundation X #1', serverID = '1';
-                            if (item._id === "72054") serverName = 'Foundation X #2', serverID = '2';
-                            if (item._id === "70249") serverName = 'Foundation X #3', serverID = '3';
-                            if (item._id === "70108") return null;  // Skip this ID
-
-                            
-                            return {
-                                serverID,
-                                serverName,
-                                playerCount: item.playerCount,
-                                playerCap: item.playerCap
-                            };
-                        }).filter(item => item !== null);  // Filter out null values
-                        
-                        // Sort the server stats by serverID
-                        serverStats.sort((a, b) => a.serverID - b.serverID);
-                        
-                        // Append sorted server stats to the DOM
-                        serverStats.forEach(stat => {
-                            const statElement = document.createElement('div');
-                            statElement.className = 'stat-item';
-
-                            // Determine the class for server number based on player count
-                            let serverNumberClass = 'server-number';
-                            if (stat.playerCount > 0) {
-                                serverNumberClass = 'server-number-players-online';
-                            }
-                            if (stat.playerCount >= stat.playerCap) {
-                                serverNumberClass = 'server-number-full';
-                            }
-
-                            statElement.innerHTML = `    
-                                <span class="${serverNumberClass}">${stat.serverID}</span>
-                                <div class="server-stats-text">
-                                    <div style="white-space: nowrap;"><strong>Server Name: </strong> ${stat.serverName}<br></div>
-                                    <div style="display: flex; flex-direction: row; gap: 5px;"><strong>Players:</strong> ${stat.playerCount}/${stat.playerCap}<br></div>    
-                                </div>
-                            `;
-                            statsDiv.appendChild(statElement);
-
-                            // Check if there are any players online
-                            if (stat.playerCount > 0) {
-                                playersOnline = true;
-                            }
-                        });
-                    } else {
-                        statsDiv.innerHTML = '<p>No server stats available.</p>';
-                    }
-                } catch (error) {
-                    console.error('Error fetching server stats:', error);
-                    serverstatinfo.innerHTML = '<p id="servers-offline" >SERVERS OFFLINE</p>';
-                    document.querySelector('.welcome-section').style.backgroundColor = '#ff0033'; // Change the background color to red
-                    statsDiv.innerHTML = '<p>Error fetching server status. Please try again later.</p>';
-                }
-            }
-
-            fetchServerStats();  // Fetch data when the page loads
-        });
-    </script>
     <body>
         <div id="preloader">
             <svg width="100" height="100" viewBox="0 0 536 434" fill="none" xmlns="http://www.w3.org/2000/svg" class="preloader-icon">
@@ -111,6 +27,9 @@
             </a>
             <a class="burger-nav-option" href="../staff/">
                 <div class="burger-nav-button">staff</div>
+            </a>
+            <a class="burger-nav-option" href="../faq/"></a>
+                <div class="burger-nav-button">FAQ</div>
             </a>
             <a class="burger-nav-option" href="https://discord.com/invite/FoundationX">
                 <div class="burger-nav-button">
@@ -157,6 +76,7 @@
                 <div class="nav-buttons">
                     <a class="button" href="https://foundationxservers.com/">home</a>
                     <a class="button" href="../shop/">shop</a>
+                    <a class="button" href="../faq/">FAQ</a>
                     <!-- <a class="button" href="../staff/">staff</a> -->
                     <a class="button-secondary" href="https://discord.com/invite/FoundationX">
                         <i class="fi fi-brands-discord discord-logo"></i>
@@ -179,18 +99,16 @@
 
         <section class="welcome">
             <div class="section-main section-homepage">   
-    
-                <div class="section-title-wrapper" id="welcomeWrapper">
-                    <span class="section-title">Welcome to FoundationX</span>
+                <div class="section-title-wrapper-faq" id="welcomeWrapper" style="text-align: left;">
+                    <span class="section-title">FoundationX Frequently Asked Questions</span>
                     <div class="desc">
-                        <span class="section-desc">Get real-time updates on player counts and server capacity and stay connected to the FoundationX SCP:SL community.</span>
+                        <span class="section-desc">Find answers to the most common questions about FoundationX! Need more help? Join the discord server and ask our community or make a ticket!</span>
                     </div>
                 </div>
-    
                 <div class="info-section">
                     <a href="https://discord.com/invite/FoundationX" class="homepage-big-button">
                         <i class="fi fi-brands-discord big-button-icon"></i>
-                        <p>Join our Discord server to stay connected with the community! Plus join find our community events like our gamenights and movie nights!</p>
+                        <p>Join our Discord server to stay connected with the community and get help! Plus join find our community events like our gamenights and movie nights!</p>
                         <i class="fi fi-rr-interactive ineractive-indicator"></i>
                     </a>
                     <a href="https://www.patreon.com/foundationxau" class="homepage-big-button">
@@ -204,7 +122,23 @@
     
                 <div id="server-stats"></div>
 
-            </div>
+                <div class="container">
+                    <h1>FAQs</h1>
+                    <details id="faq-boxes">
+                    <summary>How do?</summary>
+                    <div id="faq-boxes">
+                   Hello
+                    </div>
+                   
+                  </details>
+                  <details id="faq-boxes">
+                    <summary>How do?</summary>
+                    <div id="faq-boxes">
+                   test
+                    </div>
+                   
+                  </details>
+                  </div>
 
 
         </section>
