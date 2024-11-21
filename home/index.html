@@ -34,11 +34,32 @@
                             let serverName = `ID: ${item._id}`;
                             let serverID = `${item._id}`;
 
+<<<<<<< Updated upstream
                             
                             if (item._id === "70248") serverName = 'Foundation X #1', serverID = '1';
                             if (item._id === "72054") serverName = 'Foundation X #2', serverID = '2';
                             if (item._id === "70249") serverName = 'Foundation X #3', serverID = '3';
                             if (item._id === "70108") return null;  // Skip this ID
+=======
+                            const serverMapping = {
+                                "70248": { serverName: 'Foundation X #1', serverID: '1' },
+                                "72054": { serverName: 'Foundation X #2', serverID: '2' },
+                                "70249": { serverName: 'Foundation X #3', serverID: '3' },
+                                "81126": { serverName: 'Foundation X Events', serverID: '4' },
+                                "81136": { serverName: 'Foundation X 14.0 Public Beta #1', serverID: '5' },
+                                "81137": { serverName: 'Foundation X 14.0 Public Beta #2', serverID: '6' },
+                                "70108": null  // Skip this ID
+                            };
+
+                            const serverInfo = serverMapping[item._id];
+                            if (!serverInfo) {
+                                console.log(`Skipping server with ID: ${item._id}`);
+                                return null;
+                            }
+
+                            serverName = serverInfo.serverName;
+                            serverID = serverInfo.serverID;
+>>>>>>> Stashed changes
 
                             
                             return {
