@@ -34,13 +34,6 @@
                             let serverName = `ID: ${item._id}`;
                             let serverID = `${item._id}`;
 
-<<<<<<< Updated upstream
-                            
-                            if (item._id === "70248") serverName = 'Foundation X #1', serverID = '1';
-                            if (item._id === "72054") serverName = 'Foundation X #2', serverID = '2';
-                            if (item._id === "70249") serverName = 'Foundation X #3', serverID = '3';
-                            if (item._id === "70108") return null;  // Skip this ID
-=======
                             const serverMapping = {
                                 "70248": { serverName: 'Foundation X #1', serverID: '1' },
                                 "72054": { serverName: 'Foundation X #2', serverID: '2' },
@@ -59,7 +52,6 @@
 
                             serverName = serverInfo.serverName;
                             serverID = serverInfo.serverID;
->>>>>>> Stashed changes
 
                             
                             return {
